@@ -1,0 +1,204 @@
+<!-- Save this as index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nature's Platter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-green': '#2F7954',
+            'brand-orange': '#F9A825',
+            'brand-beige': '#FAF8F5',
+            'brand-blue': '#293A8B',
+            'brand-darkgreen': '#005934',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-brand-beige text-brand-green">
+
+<!-- HEADER -->
+<header class="bg-white shadow-sm sticky top-0 z-50" x-data="{ mobileMenu: false }">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Desktop logo -->
+    <img src="assets/logo-green.png" class="h-8 sm:h-10 hidden md:block" alt="logo" />
+    <!-- Mobile logo -->
+    <img src="assets/short-logo.png" class="h-8 sm:h-10 md:hidden" alt="mobile logo" />
+
+    <nav class="hidden md:flex space-x-6 text-sm font-medium">
+      <a href="#">Product</a>
+      <a href="#">Services</a>
+      <a href="#">Contact us</a>
+    </nav>
+    <div class="hidden md:flex items-center space-x-4">
+      <button>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 105.2 5.2a7.5 7.5 0 0010.6 10.6z" />
+        </svg>
+      </button>
+      <button>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1 5h13M6 21a1 1 0 100-2 1 1 0 000 2zm12 0a1 1 0 100-2 1 1 0 000 2z" />
+        </svg>
+      </button>
+      <a href="#" class="text-sm">Login</a>
+      <a href="#" class="bg-brand-green text-white px-4 py-1 rounded text-sm">Register</a>
+    </div>
+
+    <button @click="mobileMenu = !mobileMenu" class="md:hidden">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div x-show="mobileMenu" class="md:hidden bg-white px-4 pb-4 space-y-2">
+    <a href="#" class="block">Product</a>
+    <a href="#" class="block">Services</a>
+    <a href="#" class="block">Contact us</a>
+    <a href="#" class="block">Login</a>
+    <a href="#" class="block bg-brand-green text-white text-center py-2 rounded">Register</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative text-center px-4 py-12">
+  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold">
+    Freshness <span class="text-brand-green">You Can</span><br />
+    <span class="text-brand-green">Count On</span>, <span class="text-brand-orange">Prices You’ll Love!</span>
+  </h1>
+  <p class="mt-4 text-gray-500 max-w-md mx-auto">
+    Shop your daily essentials at unbeatable prices. From fresh produce to pantry staples, we’ve got you covered every day!
+  </p>
+  <img src="assets/hero-img.png" class="mx-auto mt-8 max-w-lg w-full" alt="hero" />
+</section>
+
+<!-- SERVICES -->
+<section class="bg-gray-50 py-12">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-2xl font-bold mb-8">Services</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow">
+        <img src="assets/support.png" class="h-16 mx-auto mb-4" />
+        <h3 class="font-semibold text-lg">24/7 Services</h3>
+        <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <img src="assets/fast-delivery.png" class="h-16 mx-auto mb-4" />
+        <h3 class="font-semibold text-lg">Fast Delivery</h3>
+        <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow">
+        <img src="assets/healthy-100.png" class="h-16 mx-auto mb-4" />
+        <h3 class="font-semibold text-lg">Healthy Products</h3>
+        <p class="text-gray-500 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR PRODUCTS -->
+<section class="py-12">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-2xl font-bold mb-8">Popular Products</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Product Card -->
+      <template id="product-template">
+        <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+          <img class="w-full h-40 object-contain p-4" />
+          <div class="p-4 text-left">
+            <div class="text-yellow-500 text-sm">★★★★★</div>
+            <h3 class="font-semibold text-lg mt-1"></h3>
+            <p class="text-brand-green font-bold text-xl"></p>
+          </div>
+        </div>
+      </template>
+      <script>
+        const products = [
+          { img: 'product-onion.png', title: 'Onion 1 KG', price: '$39.99' },
+          { img: 'product-tomato.png', title: 'Tomato 500 g', price: '$39.99' },
+          { img: 'product-potato.png', title: 'Potato 1 KG', price: '$39.99' },
+          { img: 'product-tomato.png', title: 'Tomato 500 g', price: '$39.99' },
+          { img: 'product-onion.png', title: 'Onion 1 KG', price: '$39.99' },
+          { img: 'product-potato.png', title: 'Potato 1 KG', price: '$39.99' },
+          { img: 'product-onion.png', title: 'Onion 1 KG', price: '$39.99' },
+          { img: 'product-potato.png', title: 'Potato 1 KG', price: '$39.99' }
+        ];
+        const container = document.currentScript.parentElement;
+        const template = container.querySelector('#product-template');
+        products.forEach(p => {
+          const clone = template.content.cloneNode(true);
+          clone.querySelector('img').src = `assets/${p.img}`;
+          clone.querySelector('h3').textContent = p.title;
+          clone.querySelector('p').textContent = p.price;
+          container.appendChild(clone);
+        });
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- ARRIVAL & OFFERS -->
+<section class="bg-gray-50 py-12">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-2xl font-bold mb-8">Arrival & Offers</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-brand-darkgreen text-white p-6 rounded-lg relative overflow-hidden h-64">
+        <img src="assets/product-dawat.png" class="absolute bottom-0 right-0 h-full opacity-50" />
+        <div class="relative z-10 text-left">
+          <img src="assets/dawat-logo.png" class="h-6 mb-2" />
+          <p>Cook Exotic Dishes</p>
+          <h3 class="text-xl font-bold">UP TO 20% OFF</h3>
+        </div>
+      </div>
+      <div class="bg-brand-blue text-white p-6 rounded-lg relative overflow-hidden h-64">
+        <img src="assets/product-indiagate.png" class="absolute bottom-0 right-0 h-full opacity-50" />
+        <div class="relative z-10 text-left">
+          <img src="assets/indiagate-logo.png" class="h-8 mb-2" />
+          <h3 class="text-xl font-bold">UP TO 40% OFF</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-12">
+  <div class="max-w-6xl mx-auto px-4 bg-white p-8 rounded-lg shadow flex flex-col md:flex-row items-center">
+    <img src="assets/fruit-basket.png" class="h-40 mb-4 md:mb-0 md:mr-8" />
+    <div class="text-center md:text-left">
+      <h2 class="text-xl font-bold mb-2">Get Grocery News!</h2>
+      <p class="text-gray-500 mb-4">Exclusive training tips, ticks, product deals and more.</p>
+      <form class="flex flex-col sm:flex-row gap-3">
+        <input type="email" placeholder="Enter email" class="border p-2 rounded w-full sm:w-auto flex-grow" required>
+        <button type="submit" class="bg-brand-green text-white px-4 py-2 rounded">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-brand-green text-white py-10">
+  <div class="max-w-6xl mx-auto px-4 text-center sm:text-left">
+    <img src="assets/logo-white.png" class="h-10 mx-auto sm:mx-0 mb-4" />
+    <p class="text-sm">Discover a world of treats, toys, and essentials handpicked for your furry friends</p>
+  </div>
+</footer>
+
+</body>
+</html>
