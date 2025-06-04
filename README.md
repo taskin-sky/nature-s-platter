@@ -3,25 +3,10 @@
 ### Welcome to   Sohoz 😎, Sorol 😁 & Simple 🤩 Assignment 02
 
 Hey Future Dev! 🔥  
-Your mission is to build an **attractive & Ecommerce Landing Page** for:  🍃 **Natures Platter**🍽️
-
----
-
-## 🧠 Marking System — Total: 60 Marks ( 50 : Main  + 10 : Challenge ) 
-
-
----
-
-## 🎯 Your Mission  
-🎥 **Watch the video** provided in the Bootcamp  
-📝 **Take proper notes**  
-🎯 And **complete the Requirements** exactly as shown!
-
+**attractive & Ecommerce Landing Page** for:  🍃 **Natures Platter**🍽️
 ---
 
 ## 🎨 UI Design Resources  
-
-To help you craft the perfect UI, we’ve provided:
 
 - 📁 **Figma File** – Design inspiration 💡  
 - 🖼️ **Images** – Assets for your visuals 🖌️  
@@ -30,19 +15,6 @@ To help you craft the perfect UI, we’ve provided:
 
 ---
 
-## ⏰ Deadline  
-
-📅 **Assignment-02 Deadline:**  
-🕛 **June 04,  11:59 PM** (Don't be late 🚩)
-
----
-
-## 🚩 What to Submit  
-
-- Your Code Repository Link  
-- Your Live Link 
-
----
 
 ## 🖼️ Sample Preview  
 <table>
